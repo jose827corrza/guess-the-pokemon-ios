@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who is that pokemon?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcU-ty-QRj">
-                                <rect key="frame" x="82" y="54" width="250" height="32"/>
+                                <rect key="frame" x="82" y="54" width="250" height="31.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -51,6 +50,9 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Tortoisse"/>
+                                        <connections>
+                                            <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4U5-9z-TOx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RT0-Rd-0OX">
                                         <rect key="frame" x="0.0" y="71" width="394" height="45"/>
@@ -98,6 +100,15 @@
                             <constraint firstItem="9O8-n0-to5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="174.15000000000001" id="yoF-ei-Ouj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="labelMessage" destination="fDV-6V-V8g" id="bnc-S0-3TE"/>
+                        <outlet property="labelScore" destination="9O8-n0-to5" id="dmF-Fz-8th"/>
+                        <outlet property="pokemonImage" destination="bKP-hE-q7p" id="hO9-Vl-FRz"/>
+                        <outletCollection property="answerButtons" destination="DBv-N3-urb" collectionClass="NSMutableArray" id="xX3-D0-SWM"/>
+                        <outletCollection property="answerButtons" destination="RT0-Rd-0OX" collectionClass="NSMutableArray" id="Kz8-V1-9pY"/>
+                        <outletCollection property="answerButtons" destination="XrP-bD-rP9" collectionClass="NSMutableArray" id="HJm-fX-A3W"/>
+                        <outletCollection property="answerButtons" destination="KoY-9K-7p9" collectionClass="NSMutableArray" id="c5Q-RF-ct2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
