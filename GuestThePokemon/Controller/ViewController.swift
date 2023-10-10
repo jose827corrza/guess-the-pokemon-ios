@@ -14,16 +14,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelMessage: UILabel!
     @IBOutlet var answerButtons: [UIButton]!
     
+    lazy var pokemonListManager = PokemonListManager()
     lazy var pokemonManager = PokemonManager()
+    
+    var randomFourPokemons: [PokemonListModel] = []
+    var correctAnswer: String = ""
+    var correctImage: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Gives the power to "auto" invoke the func didUpdatePokemon, as soon as it recognizes a change
+        pokemonListManager.delegate = self
+        pokemonManager.delegate = self
+        
         // Do any additional setup after loading the view.
         
         //Can set a shawod to the button, using the colors from each pokemon
         
         // Meanwhile set button properties
-        pokemonManager.fetchPokemonApi()
+        pokemonListManager.fetchPokemonApi()
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -43,3 +53,45 @@ class ViewController: UIViewController {
     }
 }
 
+// To avoid the saturation or the class ViewController with more extends, a "polite" way is the mentioned below
+extension ViewController: PokemonListManagerDelegate {
+    func didUpdatePokemons(pokemons: [PokemonListModel]) {
+        randomFourPokemons = pokemons.choose(4)
+//        print(randomFourPokemons)
+        let index = Int.random(in: 0...3)
+        let imageData = randomFourPokemons[index].pokemonURL
+        correctAnswer = randomFourPokemons[index].name
+        
+        pokemonManager.fetchPokemon(url: imageData)
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+    
+    
+}
+
+extension ViewController: PokemonManagerDelegate {
+    func didUpdatePokemon(pokemon: PokemonModel){
+        print(pokemon)
+    }
+    
+    func didFailWithErrorPokemon(error:Error) {
+        print(error)
+    }
+}
+
+// To avoid select an index  greater that the available
+extension Collection where Indices.Iterator.Element == Index {
+    // Subscript is used  to add the property to access by indices, like  with "[]"
+    public subscript(safe index: Index) -> Iterator.Element?{
+        return (startIndex <= index && index < endIndex) ? self[index] : nil
+    }
+}
+
+extension Collection {
+    func choose(_ n: Int) -> Array<Element> {
+        Array(shuffled().prefix(n))
+    }
+}

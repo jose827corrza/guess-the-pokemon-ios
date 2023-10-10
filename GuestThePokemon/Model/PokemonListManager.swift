@@ -1,5 +1,5 @@
 //
-//  ImageManager.swift
+//  PokemonManager.swift
 //  GuestThePokemon
 //
 //  Created by Jose Daniel Corredor Zambrano on 10/10/23.
@@ -7,22 +7,24 @@
 
 import Foundation
 
-
-protocol PokemonManagerDelegate {
+// Way to pass the info from the manager to the controller
+protocol PokemonListManagerDelegate {
     // Just stablishes what munt contains but DO NOT what it does
     
-    func didUpdatePokemon(pokemon: PokemonModel)
+    func didUpdatePokemons(pokemons: [PokemonListModel])
         // It wil excecute when it updates our pokemon list
     
-    func didFailWithErrorPokemon(error:Error)
+    func didFailWithError(error:Error)
 }
 
-struct PokemonManager {
+struct PokemonListManager {
+    let pokemonURL: String = "https://pokeapi.co/api/v2/pokemon?limit=150"
     
-    var delegate: PokemonManagerDelegate?
+    var delegate: PokemonListManagerDelegate?
     
-    func fetchPokemon(url: String) {
-        performRequest(with: url)
+    
+    func fetchPokemonApi(){
+        performRequest(with: pokemonURL)
     }
     
     private func performRequest(with urlString: String){
@@ -35,12 +37,12 @@ struct PokemonManager {
             let task = session.dataTask(with: url){data, response, error in
                 if error != nil{
 //                    print(error!)
-                    self.delegate?.didFailWithErrorPokemon(error: error!)
+                    self.delegate?.didFailWithError(error: error!)
                 }
                 if let safeData = data {
-                    if let pokemon = self.parseJSON(pokemonData: safeData){
+                    if let pokemons = self.parseJSON(pokemonData: safeData){
 //                        print(pokemon)
-                        self.delegate?.didUpdatePokemon(pokemon: pokemon)
+                        self.delegate?.didUpdatePokemons(pokemons: pokemons)
                     }
                 }
                 
@@ -51,14 +53,15 @@ struct PokemonManager {
         
     }
     
-    private func parseJSON(pokemonData: Data) -> PokemonModel? {
+    private func parseJSON(pokemonData: Data) -> [PokemonListModel]? {
         let decoder = JSONDecoder()
         
         do {
-            let decodedData = try decoder.decode(PokemonData.self, from: pokemonData)
-            let image = decodedData.sprites?.other?.officialArtwork?.frontDefault ?? ""
-            return PokemonModel(imageUrl: image)
-
+            let decodedData = try decoder.decode(PokemonListData.self, from: pokemonData)
+            let pokemons = decodedData.results?.map{
+                PokemonListModel(name: $0.name ?? "", pokemonURL: $0.url ?? "")
+            }
+            return pokemons
         } catch {
             return nil
         }
