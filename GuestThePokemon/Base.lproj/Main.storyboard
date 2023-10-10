@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GuestThePokemon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who is that pokemon?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcU-ty-QRj">
+                                <rect key="frame" x="82" y="54" width="250" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9O8-n0-to5">
+                                <rect key="frame" x="174" y="95.5" width="64" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xde" translatesAutoresizingMaskIntoConstraints="NO" id="bKP-hE-q7p">
+                                <rect key="frame" x="74" y="161" width="266" height="266"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="266" id="nLC-iy-WwK"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yes, its Pikachu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDV-6V-V8g">
+                                <rect key="frame" x="148" y="543.5" width="118" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="vU4-47-Avo">
+                                <rect key="frame" x="10" y="584" width="394" height="258"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBv-N3-urb">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="KKl-JU-1ez"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Tortoisse"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RT0-Rd-0OX">
+                                        <rect key="frame" x="0.0" y="71" width="394" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="Zof-Fy-ADj"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Bullbasaur"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XrP-bD-rP9">
+                                        <rect key="frame" x="0.0" y="142" width="394" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="9yy-ON-XcR"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Charmander"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoY-9K-7p9">
+                                        <rect key="frame" x="0.0" y="213" width="394" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="q6Y-8N-rw2"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Pikachu"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AcU-ty-QRj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="68Z-mj-TUf"/>
+                            <constraint firstItem="9O8-n0-to5" firstAttribute="top" secondItem="AcU-ty-QRj" secondAttribute="bottom" constant="10" id="D6V-ny-22D"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bKP-hE-q7p" secondAttribute="trailing" constant="74" id="E8B-ac-FMh"/>
+                            <constraint firstItem="vU4-47-Avo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="FEE-tD-xot"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9O8-n0-to5" secondAttribute="trailing" constant="175.84999999999999" id="IO4-dy-qFq"/>
+                            <constraint firstItem="AcU-ty-QRj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="82" id="OEL-TL-LBW"/>
+                            <constraint firstItem="fDV-6V-V8g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tom-vH-P9S"/>
+                            <constraint firstItem="bKP-hE-q7p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="74" id="VlO-cF-9me"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vU4-47-Avo" secondAttribute="bottom" constant="20" id="af9-5o-2Go"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vU4-47-Avo" secondAttribute="trailing" constant="10" id="eQM-da-1Tu"/>
+                            <constraint firstItem="vU4-47-Avo" firstAttribute="top" secondItem="fDV-6V-V8g" secondAttribute="bottom" constant="20" id="ieq-Um-yH9"/>
+                            <constraint firstItem="bKP-hE-q7p" firstAttribute="top" secondItem="9O8-n0-to5" secondAttribute="bottom" constant="45" id="tx1-mX-e1s"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AcU-ty-QRj" secondAttribute="trailing" constant="82" id="xfg-Pk-INF"/>
+                            <constraint firstItem="9O8-n0-to5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="174.15000000000001" id="yoF-ei-Ouj"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-480" y="55"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Byq-zQ-AHJ">
+            <objects>
+                <viewController id="oEY-66-zVI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fwi-r7-9Qk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C2y-Ox-G6A">
+                                <rect key="frame" x="10" y="797" width="394" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="4ZG-V9-REy"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Play again"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPPPS! you lose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-Gu-ekm">
+                                <rect key="frame" x="113.5" y="64" width="187" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xde" translatesAutoresizingMaskIntoConstraints="NO" id="lRS-Ms-aoz">
+                                <rect key="frame" x="74" y="154" width="266" height="266"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="266" id="3ZU-pG-yTY"/>
+                                    <constraint firstAttribute="height" constant="266" id="cdc-2J-bA2"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="266" id="n0N-ZC-6gy"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No, its Pikachu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NuB-NM-XkI">
+                                <rect key="frame" x="143.5" y="465" width="127.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game over, your score was 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gey-7M-2Nk">
+                                <rect key="frame" x="92.5" y="661" width="229" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ces-Yt-z84"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gey-7M-2Nk" firstAttribute="centerX" secondItem="Fwi-r7-9Qk" secondAttribute="centerX" id="0fJ-Bx-qkP"/>
+                            <constraint firstItem="C2y-Ox-G6A" firstAttribute="top" secondItem="Gey-7M-2Nk" secondAttribute="bottom" constant="115" id="2ZM-aa-l99"/>
+                            <constraint firstItem="C2y-Ox-G6A" firstAttribute="leading" secondItem="Ces-Yt-z84" secondAttribute="leading" constant="10" id="5cm-bi-bmc"/>
+                            <constraint firstItem="gS9-Gu-ekm" firstAttribute="centerX" secondItem="Fwi-r7-9Qk" secondAttribute="centerX" id="6LI-gx-Qp2"/>
+                            <constraint firstItem="Ces-Yt-z84" firstAttribute="bottom" secondItem="C2y-Ox-G6A" secondAttribute="bottom" constant="20" id="7aK-dH-86y"/>
+                            <constraint firstItem="NuB-NM-XkI" firstAttribute="centerX" secondItem="Fwi-r7-9Qk" secondAttribute="centerX" id="M7L-ym-gES"/>
+                            <constraint firstItem="Ces-Yt-z84" firstAttribute="trailing" secondItem="lRS-Ms-aoz" secondAttribute="trailing" constant="74" id="Xxd-LE-p6f"/>
+                            <constraint firstItem="gS9-Gu-ekm" firstAttribute="top" secondItem="Ces-Yt-z84" secondAttribute="top" constant="20" id="cSS-F7-8DH"/>
+                            <constraint firstItem="lRS-Ms-aoz" firstAttribute="leading" secondItem="Ces-Yt-z84" secondAttribute="leading" constant="74" id="dc3-Gb-7t7"/>
+                            <constraint firstItem="NuB-NM-XkI" firstAttribute="top" secondItem="lRS-Ms-aoz" secondAttribute="bottom" constant="45" id="jwY-OS-CzS"/>
+                            <constraint firstItem="Ces-Yt-z84" firstAttribute="trailing" secondItem="C2y-Ox-G6A" secondAttribute="trailing" constant="10" id="opp-1l-3uH"/>
+                            <constraint firstItem="lRS-Ms-aoz" firstAttribute="top" secondItem="gS9-Gu-ekm" secondAttribute="bottom" constant="58" id="t8d-bw-mj2"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GKQ-wR-aEC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="410" y="55"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="xde" width="490" height="570"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
