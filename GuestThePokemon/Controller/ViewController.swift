@@ -59,24 +59,25 @@ class ViewController: UIViewController {
             let url = URL(string: correctImage)
             pokemonImage.kf.setImage(with: url)
             
-            Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false){time in
+            Timer.scheduledTimer(withTimeInterval: 0.9, repeats: false){time in
                 self.pokemonListManager.fetchPokemonApi()
                 self.labelMessage.text = ""
                 sender.layer.borderWidth = 0
             }
             
         }else{
-            labelMessage.text = "NOOO, it's \(correctAnswer.capitalized)"
-            sender.layer.borderColor = UIColor.systemRed.cgColor
-            sender.layer.borderWidth = 2
-            let url = URL(string: correctImage)
-            pokemonImage.kf.setImage(with: url)
-            
-            Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false){time in
-                self.pokemonListManager.fetchPokemonApi()
-                self.resetGame()
-                sender.layer.borderWidth = 0
-            }
+            self.performSegue(withIdentifier: "goToResults", sender: self)
+//            labelMessage.text = "NOOO, it's \(correctAnswer.capitalized)"
+//            sender.layer.borderColor = UIColor.systemRed.cgColor
+//            sender.layer.borderWidth = 2
+//            let url = URL(string: correctImage)
+//            pokemonImage.kf.setImage(with: url)
+//
+//            Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false){time in
+//                self.pokemonListManager.fetchPokemonApi()
+//                self.resetGame()
+//                sender.layer.borderWidth = 0
+//            }
         }
     }
     
@@ -93,9 +94,9 @@ class ViewController: UIViewController {
     
     func resetGame() {
         self.pokemonListManager.fetchPokemonApi()
-        game.reset(score: 0)
         self.labelScore.text = "Score: \(game.score)"
         self.labelMessage.text = ""
+        game.reset(score: 0)
     }
     
     func setButtonsTitle() {
@@ -108,18 +109,30 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    // To move between views
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResults" {
+            let destination = segue.destination as! ResultViewController
+            destination.pokemonName = correctAnswer
+            destination.pokemonsImageUrl = correctImage
+            destination.finalScore = game.score
+            resetGame()
+        }
+    }
 }
 
 // To avoid the saturation or the class ViewController with more extends, a "polite" way is the mentioned below
 extension ViewController: PokemonListManagerDelegate {
     func didUpdatePokemons(pokemons: [PokemonListModel]) {
-        randomFourPokemons = pokemons.choose(4)
-//        print(randomFourPokemons)
         let index = Int.random(in: 0...3)
+        randomFourPokemons = pokemons.choose(4)
         let imageData = randomFourPokemons[index].pokemonURL
+        pokemonManager.fetchPokemon(url: imageData)
+        
         correctAnswer = randomFourPokemons[index].name
         print(correctAnswer)
-        pokemonManager.fetchPokemon(url: imageData)
+        
     }
     
     func didFailWithError(error: Error) {

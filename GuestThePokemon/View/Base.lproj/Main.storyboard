@@ -28,7 +28,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loader.gif" translatesAutoresizingMaskIntoConstraints="NO" id="bKP-hE-q7p">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bKP-hE-q7p">
                                 <rect key="frame" x="74" y="161" width="266" height="266"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="266" id="nLC-iy-WwK"/>
@@ -117,16 +117,17 @@
                         <outletCollection property="answerButtons" destination="RT0-Rd-0OX" collectionClass="NSMutableArray" id="Kz8-V1-9pY"/>
                         <outletCollection property="answerButtons" destination="XrP-bD-rP9" collectionClass="NSMutableArray" id="HJm-fX-A3W"/>
                         <outletCollection property="answerButtons" destination="KoY-9K-7p9" collectionClass="NSMutableArray" id="c5Q-RF-ct2"/>
+                        <segue destination="oEY-66-zVI" kind="presentation" identifier="goToResults" modalPresentationStyle="fullScreen" id="z5q-He-Yx1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-480" y="55"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="Byq-zQ-AHJ">
             <objects>
-                <viewController id="oEY-66-zVI" sceneMemberID="viewController">
+                <viewController id="oEY-66-zVI" customClass="ResultViewController" customModule="GuestThePokemon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fwi-r7-9Qk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,6 +139,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Play again"/>
+                                <connections>
+                                    <action selector="playAgainButton:" destination="oEY-66-zVI" eventType="touchUpInside" id="fs6-H3-IkW"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPPPS! you lose" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-Gu-ekm">
                                 <rect key="frame" x="113.5" y="64" width="187" height="32"/>
@@ -145,7 +149,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loader.gif" translatesAutoresizingMaskIntoConstraints="NO" id="lRS-Ms-aoz">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lRS-Ms-aoz">
                                 <rect key="frame" x="74" y="154" width="266" height="266"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="266" id="3ZU-pG-yTY"/>
@@ -183,6 +187,12 @@
                             <constraint firstItem="lRS-Ms-aoz" firstAttribute="top" secondItem="gS9-Gu-ekm" secondAttribute="bottom" constant="58" id="t8d-bw-mj2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="labelMessage" destination="NuB-NM-XkI" id="0aN-pC-jBX"/>
+                        <outlet property="labelScore" destination="Gey-7M-2Nk" id="W2H-Dv-JXA"/>
+                        <outlet property="playAgainButton" destination="C2y-Ox-G6A" id="ZqQ-sd-M57"/>
+                        <outlet property="pokemonImage" destination="lRS-Ms-aoz" id="OQt-IV-Lke"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GKQ-wR-aEC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,7 +200,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="loader.gif" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
