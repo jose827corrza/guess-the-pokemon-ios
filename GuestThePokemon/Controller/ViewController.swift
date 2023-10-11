@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ViewController: UIViewController {
 
@@ -16,8 +17,14 @@ class ViewController: UIViewController {
     
     lazy var pokemonListManager = PokemonListManager()
     lazy var pokemonManager = PokemonManager()
+    lazy var game = GamenModel()
     
-    var randomFourPokemons: [PokemonListModel] = []
+    var randomFourPokemons: [PokemonListModel] = [] {
+        didSet {
+            // As soon as this receives info, this code runs
+            setButtonsTitle()
+        }
+    }
     var correctAnswer: String = ""
     var correctImage: String = ""
     
@@ -28,17 +35,49 @@ class ViewController: UIViewController {
         pokemonListManager.delegate = self
         pokemonManager.delegate = self
         
+        
         // Do any additional setup after loading the view.
         
         //Can set a shawod to the button, using the colors from each pokemon
         
         // Meanwhile set button properties
+        createButtons()
         pokemonListManager.fetchPokemonApi()
+        labelMessage.text = ""
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
         // With .title didnt work
-//        print(sender.titleLabel?.text!)
+        let userAnswer = sender.titleLabel?.text!
+        if game.checkAnswer(userAnswer!, correctAnswer){
+            labelMessage.text = "Yes, it's \(correctAnswer.capitalized)"
+            labelScore.text = "Score: \(game.score)"
+            
+            sender.layer.borderColor = UIColor.systemGreen.cgColor
+            sender.layer.borderWidth = 2
+            
+            let url = URL(string: correctImage)
+            pokemonImage.kf.setImage(with: url)
+            
+            Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false){time in
+                self.pokemonListManager.fetchPokemonApi()
+                self.labelMessage.text = ""
+                sender.layer.borderWidth = 0
+            }
+            
+        }else{
+            labelMessage.text = "NOOO, it's \(correctAnswer.capitalized)"
+            sender.layer.borderColor = UIColor.systemRed.cgColor
+            sender.layer.borderWidth = 2
+            let url = URL(string: correctImage)
+            pokemonImage.kf.setImage(with: url)
+            
+            Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false){time in
+                self.pokemonListManager.fetchPokemonApi()
+                self.resetGame()
+                sender.layer.borderWidth = 0
+            }
+        }
     }
     
     func createButtons(){
@@ -51,6 +90,24 @@ class ViewController: UIViewController {
             button.layer.masksToBounds = true
         }
     }
+    
+    func resetGame() {
+        self.pokemonListManager.fetchPokemonApi()
+        game.reset(score: 0)
+        self.labelScore.text = "Score: \(game.score)"
+        self.labelMessage.text = ""
+    }
+    
+    func setButtonsTitle() {
+        for (index, button) in answerButtons.enumerated() {
+            // Because we are using protocols and delegates, is a MUST to use Dispatch
+            // This will allow us to work async, because we are using calls from a remote API
+            // also is important to keep in mind, that this info must be send to the main thread
+            DispatchQueue.main.async { [self] in // To avoid type self in every prop
+                button.setTitle(randomFourPokemons[safe: index]?.name.capitalized, for: .normal)
+            }
+        }
+    }
 }
 
 // To avoid the saturation or the class ViewController with more extends, a "polite" way is the mentioned below
@@ -61,7 +118,7 @@ extension ViewController: PokemonListManagerDelegate {
         let index = Int.random(in: 0...3)
         let imageData = randomFourPokemons[index].pokemonURL
         correctAnswer = randomFourPokemons[index].name
-        
+        print(correctAnswer)
         pokemonManager.fetchPokemon(url: imageData)
     }
     
@@ -74,7 +131,19 @@ extension ViewController: PokemonListManagerDelegate {
 
 extension ViewController: PokemonManagerDelegate {
     func didUpdatePokemon(pokemon: PokemonModel){
-        print(pokemon)
+//        print(pokemon)
+        correctImage = pokemon.imageUrl
+        
+        DispatchQueue.main.async { [self] in
+            let url = URL(string: pokemon.imageUrl)
+            let effect = ColorControlsProcessor(brightness: -1, contrast: 1, saturation: 1, inputEV: 0)
+            pokemonImage.kf.setImage(
+                with: url,
+                options: [
+                    .processor(effect)
+                ]
+            )
+        }
     }
     
     func didFailWithErrorPokemon(error:Error) {

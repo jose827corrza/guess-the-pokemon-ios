@@ -28,7 +28,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xde" translatesAutoresizingMaskIntoConstraints="NO" id="bKP-hE-q7p">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loader.gif" translatesAutoresizingMaskIntoConstraints="NO" id="bKP-hE-q7p">
                                 <rect key="frame" x="74" y="161" width="266" height="266"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="266" id="nLC-iy-WwK"/>
@@ -145,7 +145,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xde" translatesAutoresizingMaskIntoConstraints="NO" id="lRS-Ms-aoz">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loader.gif" translatesAutoresizingMaskIntoConstraints="NO" id="lRS-Ms-aoz">
                                 <rect key="frame" x="74" y="154" width="266" height="266"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="266" id="3ZU-pG-yTY"/>
@@ -190,7 +190,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="xde" width="490" height="570"/>
+        <image name="loader.gif" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
